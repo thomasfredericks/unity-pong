@@ -6,4 +6,4 @@
 
 ## Instructions
 
-- Utiliser les flêches ↑ et ↑ du clavier pour monter et descendre la palette de gauche.
+- Utiliser les flêches ↑ et ↓ du clavier pour monter et descendre la palette de gauche.
