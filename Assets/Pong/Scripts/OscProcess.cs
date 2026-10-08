@@ -12,15 +12,7 @@ public class OscProcess : MonoBehaviour
     public float betaOutMin = 0.0f;
     public float betaOutMax = 1.0f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        oscReceiver.Bind("/beta", TraiterMessageBeta);
-    }
-
-    // Update is called once per frame
-    void Update() { }
+    public PlayerPaddle player;
 
     void TraiterMessageBeta(OSCMessage message)
     {
@@ -33,10 +25,19 @@ public class OscProcess : MonoBehaviour
         // Debug.Log("Reçu : " + message.Address + " " + valeur);
 
         // Ajustement de la valeur
-        float ajuste = (
+        float ajustee = (
             ((float)valeur - betaInMin) / (betaInMax - betaInMin) * (betaOutMax - betaOutMin) + betaOutMin
         );
-        // AJOUTER À LA LIGNE SUIVANTE LE CODE POUR APPLIQUER LA VARIABLE ajuste AU DÉPLACEMENT DE LA PALETTE ICI !
-        // COMME INDICE C’EST QQCH COMME : palette.setVercialPosition( ajuste);
+        
+        player.SetPosition(ajustee);
     }
+
+
+    void Start()
+    {
+        oscReceiver.Bind("/beta", TraiterMessageBeta);
+    }
+
+    // Update is called once per frame
+    void Update() { }
 }
